@@ -15,7 +15,7 @@ let elapsed = 0;
 let timerId = null;
 let lapCount = 0;
 
-// A helper to turn milliseconds into "hh:mm:ss.mmm" text
+// this is a helper to turn milliseconds into "hh:mm:ss.mmm" text
 function format(ms) {
   const hours = Math.floor(ms / 3600000);
   const minutes = Math.floor((ms % 3600000) / 60000);
@@ -30,7 +30,7 @@ function format(ms) {
   return `${hh}:${mm}:${ss}.${mmm}`;
 }
 
-// Put the current elapsed time on screen
+// adding the current elapsed time on screen
 function render() {
   display.textContent = format(elapsed);
 }
@@ -40,7 +40,7 @@ function tick() {
   render();
 }
 
-// setting the startTime in a way that supports "resume" after Stop
+// here is to set the startTime in a way that supports "resume" after Stop
 function startTimer() {
   if (timerId !== null) return;
   startTime = Date.now() - elapsed;
@@ -56,7 +56,7 @@ function stopTimer() {
   startStopBtn.textContent = "Start";
 }
 
-// 8) Reset everything back to zero
+// this resets everything back to zero
 function resetTimer() {
   stopTimer();
   elapsed = 0;
@@ -71,20 +71,20 @@ function addLap() {
   if (lapCount === 0) lapsSection.classList.remove("hidden");
   lapCount += 1;
 
-  // Create one list item with two spans so your CSS can space them left/right
+  // this creates one list item with two spans so my CSS can space them left/right
   const li = document.createElement("li");
   const left = document.createElement("span");
   const right = document.createElement("span");
 
-  left.textContent = `Lap ${lapCount}`;
-  right.textContent = format(elapsed);
+  left.textContent = `Lap ${lapCount}:`;
+  right.textContent = ` ${format(elapsed)}`;
 
   li.appendChild(left);
   li.appendChild(right);
   lapsList.appendChild(li);
 }
 
-// Start/Stop: same button, it toggles
+// Start/Stop on same button when it toggles
 startStopBtn.addEventListener("click", () => {
   if (timerId === null) {
     startTimer();
@@ -93,7 +93,7 @@ startStopBtn.addEventListener("click", () => {
   }
 });
 
-// Reset: always clears time and laps
+// Reset to always clears time and laps
 resetBtn.addEventListener("click", resetTimer);
 
 // Lap:

@@ -192,8 +192,15 @@ h1 {
 
 /* zebra striping */
 #laps li:nth-child(even) {
-  background: rgba(0, 0, 0, 0.03);
+  background: rgba(0, 0, 0, 0.05);
 }
+
+/* adding space in between the lap label and the text */
+#laps li span:first-child {
+  font-weight: 600;
+  margin-right: 10px;
+}
+
 
 /* overall light and dark themes */
 
